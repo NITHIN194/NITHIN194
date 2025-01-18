@@ -14,6 +14,8 @@ This is a RISC-V Talent Development Program, powered by Samsung Semiconductor In
 * VDI Link: https://forgefunder.com/~kunal/riscv_workshop.vdi and password for the machine is vsdiat
 
 **1. Install Ubuntu 18.04 LTS(Bionic Beaver) on Oracle Virtual Machine Box as given in the file**
+![image](https://github.com/user-attachments/assets/dc3ff968-860f-4cfd-9299-e08369573c6e)
+
 
 **2. Create a Basic C file then Compile it with normal GCC-Compiler and See the Output**
 ```
@@ -27,6 +29,8 @@ $ gvim sum.c
 $ gcc sum.c
 $ ./a.out
 ```
+![image](https://github.com/user-attachments/assets/a919780e-aab5-4106-8755-fd58876bb489)
+
 
 
 **3. Now Compile the same file with RISC-V Gcc-Compiler**
@@ -34,6 +38,8 @@ $ ./a.out
 ```
 $ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum.o sum.c
 ```
+![image](https://github.com/user-attachments/assets/a67f0942-7974-4223-aa90-5d7facb7b2e1)
+
 
 
 Verify that the file has been compiled using below command
@@ -49,6 +55,7 @@ Obtain the assembly level code file by using below command.
 ```
 $ riscv64-unknown-elf-objdump -d sum.o
 ```
+![image](https://github.com/user-attachments/assets/a7d43e19-6bbe-4a25-9fd3-6bf491082b62)
 
 
 * Here the **-d** stands for disassemble
@@ -56,16 +63,20 @@ $ riscv64-unknown-elf-objdump -d sum.o
 ```
 $ riscv64-unknown-elf-objdump -d sum.o | less
 ```
+![image](https://github.com/user-attachments/assets/12d17edf-c19f-482d-a8ec-c4708eb289fd)
 
 * Now check for main by pressing **/** .
 * The main here refers to int main() of your c file and keep in mind that the main should be present inside the <>.
+![image](https://github.com/user-attachments/assets/d70bc97f-3f58-48a1-a799-53fa5861d87b)
 
  
 * Now see here mine file took total of **11** instructions to complete the execution of int main() part.
 * So, how did I get to know it took 11 instructions simple 101b0-10184=2C. 2C divided by 4 you get 11. 101b0 are last numbers before the atexit part see the image.
 * These is when I used ```$ riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum.o sum.c``` command
 * If Replace -O1 with -Ofast i.e ```$ riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum.o sum.c``` then you would see reduction in instruction cycle.
-  
+
+  ![image](https://github.com/user-attachments/assets/731eeafe-e433-4d19-98f0-077aa3a4f1ea)
+
 
  * For mine it is same but for you it should change for that please change the **a** value from 10 to 100 or something big number.
 
