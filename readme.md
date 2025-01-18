@@ -23,6 +23,7 @@ $ gvim sum.c
 ![image](https://github.com/user-attachments/assets/70d837e1-79ed-46c4-93d6-9c7aa5b2e15b)
 
 ```
+
 $ gcc sum.c
 $ ./a.out
 ```
